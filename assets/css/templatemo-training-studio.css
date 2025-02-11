@@ -1304,3 +1304,15 @@ responsive
   background-color: #f9735b; /* ホバー時の背景色 */
   border-color: #f9735b; /* ホバー時の枠線色 */
 }
+
+
+.member-img {
+  width: 100%;
+  max-width: 250px;
+  border-radius: 10px;
+  transition: transform 0.2s;
+}
+
+.member-img:hover {
+  transform: scale(1.05);
+}
