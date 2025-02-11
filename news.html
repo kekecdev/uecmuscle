@@ -72,20 +72,55 @@ https://templatemo.com/tm-548-training-studio
 
 
     <!-- ***** Features Item Start ***** -->
-    <section class="section">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
-                    <div class="section-heading">
-                        <h2>Comming Soon</h2>
+ <!-- メインコンテンツ -->
+ <section class="section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="section-heading text-center">
+                    <h2>📢 NEWS & お知らせ</h2>
+                </div>
 
-                </div>  
+                <!-- カテゴリフィルター -->
+                <div class="news-filter">
+                    <button onclick="filterNews('all')">すべて</button>
+                    <button onclick="filterNews('tournament')">大会関連</button>
+                    <button onclick="filterNews('event')">イベント情報</button>
+                    <button onclick="filterNews('report')">活動報告</button>
+                </div>
+
+                <!-- ニュース一覧 -->
+                <ul class="news-list">
+                    <li class="news-item" data-category="tournament">
+                        <strong>2025/1/15</strong> <a href="news/post3.html">2024年度ベンチプレス大会を無事終了しました！</a>
+                    </li>
+                    <li class="news-item" data-category="tournament">
+                        <strong>2024/12/23</strong> <a href="news/post2.html">2024年度ベンチプレス大会開催のお知らせ</a>
+                    </li>
+                    <li class="news-item" data-category="event">
+                        <strong>2024/12/11</strong> <a href="news/post1.html">トレーニングマニュアル設置のお知らせ</a>
+                    </li>
+                    <li class="news-item" data-category="report">
+                        <strong>2024/10/30</strong> <a href="news/post0.html">サークル活動報告：新入部員向けトレーニングセッション</a>
+                    </li>
+                </ul>
+
+                <!-- 公式X埋め込み -->
+                <div class="section-heading text-center">
+                    <h2>公式 X</h2>
+                </div>
+                <a class="twitter-timeline" 
+                   href="https://twitter.com/uec_muscle?ref_src=twsrc%5Etfw"
+                   data-height="800" 
+                   data-width="100%" 
+                   data-theme="light">
+                    Tweets by uec_muscle
+                </a>
+                <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             </div>
-
         </div>
-  
-        
-    </section>
+    </div>
+</section>
     
     <!-- ***** Features Item End ***** -->
 
@@ -119,6 +154,22 @@ https://templatemo.com/tm-548-training-studio
     <script src="assets/js/bootstrap.min.js"></script>
 
     <!-- Plugins -->
+
+      <!-- JavaScript: ニュースカテゴリフィルタ -->
+      <script>
+        function filterNews(category) {
+            let newsItems = document.querySelectorAll(".news-item");
+
+            newsItems.forEach(item => {
+                if (category === "all") {
+                    item.style.display = "block";
+                } else {
+                    item.style.display = item.getAttribute("data-category") === category ? "block" : "none";
+                }
+            });
+        }
+    </script>
+
     <script src="assets/js/scrollreveal.min.js"></script>
     <script src="assets/js/waypoints.min.js"></script>
     <script src="assets/js/jquery.counterup.min.js"></script>
