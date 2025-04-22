@@ -122,6 +122,57 @@
                     </div>
                 </div>
             </div>
+            <h4 style="margin-top: 50px;">📊 アフィリエイト収益の通算額</h4>
+            <p>以下は、サークルがこれまでに得たアフィリエイト収益の合計金額です。</p>
+            
+            <!-- グラフ表示 -->
+            <div style="max-width: 400px; margin: 0 auto;">
+              <canvas id="totalRevenueChart"></canvas>
+              <p class="text-center mt-2">🎯 目標：<strong>10,000円</strong></p>
+            </div>
+            
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script>
+              const totalRevenue = 60; // ← 実際の収益額に応じて更新してください
+              const goalRevenue = 10000;
+            
+              const ctx = document.getElementById('totalRevenueChart').getContext('2d');
+              const totalRevenueChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                  labels: ['収益額'],
+                  datasets: [{
+                    data: [totalRevenue, Math.max(goalRevenue - totalRevenue, 0)],
+                    backgroundColor: [
+                      'rgba(237, 86, 59, 0.8)',  // 実績
+                      'rgba(200, 200, 200, 0.3)' // 残り
+                    ],
+                    borderWidth: 1
+                  }]
+                },
+                options: {
+                  plugins: {
+                    tooltip: {
+                      callbacks: {
+                        label: function (context) {
+                          return `￥${context.parsed.toLocaleString()} 円`;
+                        }
+                      }
+                    },
+                    legend: {
+                      display: false
+                    },
+                    title: {
+                      display: true,
+                      text: `現在の収益：￥${totalRevenue.toLocaleString()}`
+                    }
+                  },
+                  cutout: '70%'
+                }
+              });
+            </script>
+            
+
         </div>
     </section>
 
